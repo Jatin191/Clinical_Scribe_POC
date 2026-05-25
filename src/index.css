@@ -1,0 +1,307 @@
+:root {
+  --text: #4f5965;
+  --text-h: #111827;
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --border: #d9e2ec;
+  --accent: #0f766e;
+  --accent-strong: #115e59;
+  --danger: #b42318;
+  --danger-bg: #fff1f0;
+  --muted: #eef4f8;
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  background: var(--bg);
+  color: var(--text);
+  color-scheme: light dark;
+  font: 16px/145% var(--sans);
+  font-synthesis: none;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #c8d0d8;
+    --text-h: #f3f4f6;
+    --bg: #111827;
+    --panel: #17212f;
+    --border: #334155;
+    --accent: #2dd4bf;
+    --accent-strong: #5eead4;
+    --danger: #fda29b;
+    --danger-bg: #3b1715;
+    --muted: #243244;
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+button {
+  background: var(--accent);
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 0 18px;
+}
+
+button:hover {
+  background: var(--accent-strong);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+button.stop {
+  background: var(--danger);
+}
+
+h1,
+h2 {
+  color: var(--text-h);
+  font-weight: 800;
+  letter-spacing: 0;
+  margin: 6px 0 0;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 1.1;
+}
+
+p {
+  margin: 0;
+}
+
+.app-shell {
+  display: grid;
+  gap: 24px;
+  margin: 0 auto;
+  max-width: 760px;
+  min-height: 100svh;
+  padding: 32px;
+}
+
+.app-header {
+  align-items: end;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.tabs {
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+}
+
+.tabs button {
+  background: transparent;
+  color: var(--text);
+  min-height: 36px;
+  padding: 0 14px;
+}
+
+.tabs button.active {
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  color: var(--text-h);
+}
+
+.audio-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 24px;
+  padding: 32px;
+  width: 100%;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+.option-toggle {
+  align-items: flex-start;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-h);
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+}
+
+.option-toggle input {
+  accent-color: var(--accent);
+  flex: 0 0 auto;
+  height: 18px;
+  margin: 2px 0 0;
+  width: 18px;
+}
+
+.option-toggle span {
+  font-weight: 700;
+}
+
+.error {
+  background: var(--danger-bg);
+  border: 1px solid color-mix(in srgb, var(--danger), transparent 65%);
+  border-radius: 8px;
+  color: var(--danger);
+  padding: 12px;
+}
+
+.meter {
+  background: var(--muted);
+  border-radius: 999px;
+  height: 16px;
+  overflow: hidden;
+}
+
+.meter span {
+  background: linear-gradient(90deg, var(--accent), #f59e0b, var(--danger));
+  display: block;
+  height: 100%;
+  min-width: 2px;
+  transition: width 80ms linear;
+}
+
+.metrics {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metrics div {
+  background: var(--muted);
+  border-radius: 8px;
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+}
+
+.metrics .quality {
+  grid-column: 1 / -1;
+}
+
+.patient-prompt {
+  background: var(--danger-bg);
+  border: 1px solid color-mix(in srgb, var(--danger), transparent 55%);
+  border-radius: 8px;
+  color: var(--danger);
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+}
+
+.patient-prompt span {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.patient-prompt strong {
+  color: var(--text-h);
+  font-size: 18px;
+}
+
+.metrics span,
+.empty {
+  color: var(--text);
+}
+
+.metrics strong {
+  color: var(--text-h);
+  font-size: 22px;
+}
+
+.status-card {
+  background: var(--muted);
+  border-radius: 8px;
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+}
+
+.status-card span {
+  color: var(--text);
+}
+
+.status-card strong {
+  color: var(--text-h);
+  font-size: 22px;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 16px;
+  }
+
+  .app-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .tabs button {
+    flex: 1;
+  }
+
+  .audio-panel {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+}
